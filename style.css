@@ -689,5 +689,29 @@
     background-size: 12px;
 }
 
+.statistics {
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    margin-left: 40px;
+    padding: 40px;
+    background: #FFFFFF;
+    border-radius: 20px;
+}
+
+.statistics__headline {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 31px;
+    color: #171B1E;
+}
+
+.statistics__canvas {
+    margin-top: 20px;
+    height: 450px;
+    width: 100%;
+}
+
 
 /* main styles end  */
