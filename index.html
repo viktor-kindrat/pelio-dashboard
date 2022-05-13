@@ -58,7 +58,12 @@
             </div>
         </asside>
         <header class="header">
-            <div class="dasboard-logo">
+            <div class="header__burger">
+                <div class="header__line"></div>
+                <div class="header__line"></div>
+                <div class="header__line"></div>
+            </div>
+            <div class="dashboard-logo">
                 <div class="dashboard-logo-image">
                     <div class="image-row">
                         <div class="image-item"></div>
@@ -71,6 +76,7 @@
                 </div>
                 <h1 class="dashboard-logo__text">Dashboard</h1>
             </div>
+            <div class="header__logo"></div>
             <input type="text" class="header__input" placeholder="Search Here...">
             <div class="header__account-group">
                 <div class="header__messages-group">
@@ -92,7 +98,7 @@
         </header>
         <main class="main">
             <section class="dashboard">
-                <div class="dashboard__row">
+                <div class="dashboard__row dashboard__row_adapt">
                     <!-- first card  -->
                     <div class="card">
                         <div class="card__image" style="background: #ffffff2c url('./images/cards/list.svg') no-repeat center;"></div>
@@ -148,7 +154,7 @@
                         <div class="transactions__place">
                             <!-- transaction 1 -->
                             <div class="transactions__row">
-                                <div class="transactions__group">
+                                <div class="transactions__group transactions__group-name">
                                     <div class="transactions__logo transactions__logo_blue"></div>
                                     <div class="transactions__column">
                                         <div class="transactions__text transactions__text_blue">#KLA-237-393-950</div>
@@ -162,7 +168,7 @@
                                         <h4 class="transactions__name">$ 4,67,859</h4>
                                     </div>
                                 </div>
-                                <div class="transactions__text">5 min ago</div>
+                                <div class="transactions__text transactions__time">5 min ago</div>
                                 <div class="transactions__group">
                                     <button class="transactions__print-btn"></button>
                                     <button class="transactions__more-btn">
@@ -174,7 +180,7 @@
                             </div>
                             <!-- transaction 2 -->
                             <div class="transactions__row">
-                                <div class="transactions__group">
+                                <div class="transactions__group transactions__group-name">
                                     <div class="transactions__logo transactions__logo_yellow"></div>
                                     <div class="transactions__column">
                                         <div class="transactions__text transactions__text_blue">#KLA-237-393-950</div>
@@ -188,7 +194,7 @@
                                         <h4 class="transactions__name">$ 89,859</h4>
                                     </div>
                                 </div>
-                                <div class="transactions__text">5 min ago</div>
+                                <div class="transactions__text transactions__time">5 min ago</div>
                                 <div class="transactions__group">
                                     <button class="transactions__print-btn"></button>
                                     <button class="transactions__more-btn">
@@ -200,7 +206,7 @@
                             </div>
                             <!-- transaction 3  -->
                             <div class="transactions__row">
-                                <div class="transactions__group">
+                                <div class="transactions__group transactions__group-name">
                                     <div class="transactions__logo transactions__logo_green"></div>
                                     <div class="transactions__column">
                                         <div class="transactions__text transactions__text_blue">#KLA-237-393-950</div>
@@ -214,7 +220,7 @@
                                         <h4 class="transactions__name">$ 3,43,67,859</h4>
                                     </div>
                                 </div>
-                                <div class="transactions__text">5 min ago</div>
+                                <div class="transactions__text transactions__time">5 min ago</div>
                                 <div class="transactions__group">
                                     <button class="transactions__print-btn"></button>
                                     <button class="transactions__more-btn">
@@ -226,7 +232,7 @@
                             </div>
                             <!-- transaction 4  -->
                             <div class="transactions__row">
-                                <div class="transactions__group">
+                                <div class="transactions__group transactions__group-name">
                                     <div class="transactions__logo transactions__logo_red"></div>
                                     <div class="transactions__column">
                                         <div class="transactions__text transactions__text_blue">#KLA-237-393-950</div>
@@ -240,7 +246,7 @@
                                         <h4 class="transactions__name">$ 2,07,859</h4>
                                     </div>
                                 </div>
-                                <div class="transactions__text">5 min ago</div>
+                                <div class="transactions__text transactions__time">5 min ago</div>
                                 <div class="transactions__group">
                                     <button class="transactions__print-btn"></button>
                                     <button class="transactions__more-btn">
@@ -252,7 +258,7 @@
                             </div>
                         </div>
                         <div class="transactions__footer">
-                            <div class="transactions__text">Showing <b class="transactions__text_bold">1-4</b> from <b class="transactions__text_bold">60</b> Data</div>
+                            <div class="transactions__text transactions__showing">Showing <b class="transactions__text_bold">1-4</b> from <b class="transactions__text_bold">60</b> Data</div>
                             <div class="transactions__pagination">
                                 <div class="transactions__pagination-item"></div>
                                 <div class="transactions__pagination-item transactions__pagination-item_active">1</div>
@@ -264,10 +270,12 @@
                     </div>
                     <div class="statistics">
                         <h3 class="statistics__headline">Statistics</h3>
-                        <canvas height="400px" id="statistic-chart" class="statistics__canvas"></canvas>
+                        <div class="statistics__canvas-container">
+                            <canvas height="400px" id="statistic-chart" class="statistics__canvas"></canvas>
+                        </div>
                     </div>
                 </div>
-                <div class="dashboard__row dashboard__row_margin-top-40">
+                <div class="dashboard__row dashboard__row_margin-top-40 dashboard__adaptive">
                     <div class="dashboard__column">
                         <div class="balance">
                             <div class="balance__text balance__text_semi-bold">Balance</div>
@@ -303,7 +311,7 @@
                                 <h2 class="transactions-chart__headline">5793</h2>
                             </div>
                             <div class="transactions-chart__canvas">
-                                <canvas id="transactions-chart" height="80px" width="250px"></canvas>
+                                <canvas id="transactions-chart" height="80px" width="200px"></canvas>
                             </div>
                         </div>
                     </div>
