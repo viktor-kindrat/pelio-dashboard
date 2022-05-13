@@ -5,6 +5,9 @@ Pelio - your finance dashboard.
 Figma to HTML project.
 
 ---
+open https://pelio-dashboard.netlify.app/
+---
+
 ![preview](https://fv9-5.failiem.lv/thumb_show.php?i=9kju3bgur&view "")
 ---
 
