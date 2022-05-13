@@ -503,6 +503,7 @@
 
 .dashboard__row_margin-top-40 {
     margin-top: 40px;
+    align-items: stretch;
 }
 
 .transactions {
@@ -748,7 +749,7 @@
 }
 
 .balance {
-    width: 466px;
+    width: 100%;
     padding: 40px;
     color: #ffffff;
     background: linear-gradient(247.35deg, #936DFF 0%, #3ED1FF 100%);
@@ -887,6 +888,7 @@
 }
 
 .dashboard__column {
+    width: 35%;
     display: flex;
     flex-direction: column;
     align-items: stretch;
@@ -1003,6 +1005,149 @@
     margin-top: 5px;
     color: #171B1E;
     white-space: nowrap;
+}
+
+.activity {
+    width: calc(30% - 40px);
+    background: #FFFFFF;
+    border-radius: 20px;
+    padding: 40px;
+    margin-bottom: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.activity__text {
+    font-family: 'DM Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 21px;
+    color: #72757A;
+}
+
+.activity__text_bold {
+    font-weight: 700;
+}
+
+.activity__price {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 39px;
+    color: #171B1E;
+    white-space: nowrap;
+    margin-bottom: 20px;
+}
+
+.activity__group {
+    height: 20%;
+    display: flex;
+    flex-direction: column;
+}
+
+.chart {
+    height: 80%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.chart__row {
+    display: flex;
+}
+
+.chart__column {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-right: 20px;
+}
+
+.chart__container {
+    width: 50px;
+    height: 150px;
+    background: #de2020;
+    border-radius: 25px 25px 0 0;
+    display: flex;
+    align-items: flex-end;
+    -webkit-border-radius: 25px 25px 0 0;
+    -moz-border-radius: 25px 25px 0 0;
+    -ms-border-radius: 25px 25px 0 0;
+    -o-border-radius: 25px 25px 0 0;
+}
+
+.chart__inner {
+    height: 50%;
+    width: 50px;
+    border-radius: 25px 25px 0 0;
+}
+
+.chart__column:nth-child(1) .chart__container {
+    background: linear-gradient(0deg, #29c67f54 -0.01%, #60E2AF54 100%);
+}
+
+.chart__column:nth-child(1) .chart__container .chart__inner {
+    background: #00D171;
+}
+
+.chart__column:nth-child(2) .chart__container {
+    background: #FF8C7754;
+}
+
+.chart__column:nth-child(2) .chart__container .chart__inner {
+    height: 85%;
+    background: #FF684D;
+}
+
+.chart__column:nth-child(3) .chart__container {
+    background: #70DAFF54;
+}
+
+.chart__column:nth-child(3) .chart__container .chart__inner {
+    height: 45%;
+    background: #01BEFF;
+}
+
+.chart__value {
+    color: #101625;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.chart__label {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 21px;
+    text-align: center;
+    color: #72757A;
+    margin-top: 5px;
+}
+
+.chart__color {
+    height: 10px;
+    width: 50px;
+    border-radius: 3px;
+}
+
+.chart__legend-item:nth-child(1) .chart__color {
+    background: #00D171;
+}
+
+.chart__legend-item:nth-child(2) .chart__color {
+    background: #FF684D;
+}
+
+.chart__legend-item:nth-child(3) .chart__color {
+    background: #01BEFF;
+}
+
+.chart__legend-text {
+    color: #72757A;
+    font-weight: 400;
 }
 
 
