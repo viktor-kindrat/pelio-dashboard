@@ -54,6 +54,7 @@
     left: 0;
     top: 0;
     overflow: auto;
+    z-index: 10;
 }
 
 .asside__logo-row {
@@ -417,6 +418,7 @@
     display: flex;
     align-items: center;
     margin-left: 40px;
+    cursor: pointer;
 }
 
 .header__account-row::after {
@@ -427,6 +429,7 @@
     border-right: 7px solid transparent;
     border-top: 7px solid #BEBEBE;
     border-radius: 2px;
+    margin-left: 10px;
     -webkit-border-radius: 2px;
     -moz-border-radius: 2px;
     -ms-border-radius: 2px;
@@ -1320,14 +1323,37 @@
         align-items: center;
         justify-content: space-around;
         margin-right: 20px;
+        z-index: 11;
+        position: absolute;
+        top: 60px;
+        left: 50px;
+        transition: 0.3s;
+        -webkit-transition: 0.3s;
+        -moz-transition: 0.3s;
+        -ms-transition: 0.3s;
+        -o-transition: 0.3s;
+    }
+    .dashboard-logo {
+        margin-left: 50px;
     }
     .header__line {
         width: 100%;
         height: 2px;
         background: #101625;
+        position: relative;
+        transition: 0.3s;
+        -webkit-transition: 0.3s;
+        -moz-transition: 0.3s;
+        -ms-transition: 0.3s;
+        -o-transition: 0.3s;
     }
     .asside {
-        display: none;
+        left: -100%;
+        transition: 0.3s;
+        -webkit-transition: 0.3s;
+        -moz-transition: 0.3s;
+        -ms-transition: 0.3s;
+        -o-transition: 0.3s;
     }
     .main {
         width: 100%;
@@ -1444,11 +1470,19 @@
     .dashboard-logo {
         display: none;
     }
+    .header__burger {
+        top: 50px;
+        left: 25px;
+    }
     .header__logo {
         height: 48px;
         width: 48px;
+        margin-left: 60px;
         background: url("./images/asside/Logo.svg") center no-repeat;
         background-size: contain;
+    }
+    .asside {
+        width: 100%;
     }
     .detail {
         width: 100%;
