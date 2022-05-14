@@ -5,7 +5,7 @@ const myChart = new Chart(ctx, {
         labels: ['1.5', '2', '2.5', '3', '3.5', '4'],
         datasets: [{
             label: '',
-            data: [12, 19, 3, 5, 2, 3],
+            data: [12, 19, 3, 5, 16, 3],
             backgroundColor: [
                 'rgb(255, 99, 132)',
                 'rgb(54, 162, 235)',
