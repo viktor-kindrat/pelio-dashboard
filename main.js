@@ -12,7 +12,7 @@ fetch('https://randomuser.me/api/')
         console.log(data);
     });
 
-$('.balance').mouseover(function() {
+$('.balance').mouseenter(function() {
     $('.balance').css({
         'background': 'linear-gradient(247.35deg, #936DFF 0%, #3ED1FF 100%)',
         'animation': 'blick 0.3s ease-out'
@@ -23,7 +23,7 @@ $('.balance').mouseover(function() {
         $('.balance').css('animation', 'none');
     }, 299);
 });
-$('.balance').mouseout(function() {
+$('.balance').mouseleave(function() {
     $('.balance').css({
         'background': '#171B1E',
         'animation': 'blick 0.3s ease-out'
@@ -33,3 +33,11 @@ $('.balance').mouseout(function() {
         $('.balance').css('animation', 'none');
     }, 299);
 });
+$('.transactions__pagination-item').click(function() {
+    $('.transactions__pagination-item').attr('class', 'transactions__pagination-item')
+    $(this).attr('class', 'transactions__pagination-item transactions__pagination-item_active')
+})
+$('.asside__menu-item').click(function() {
+    $('.asside__menu-item').attr('class', 'asside__menu-item');
+    $(this).attr('class', 'asside__menu-item asside__menu-item_active')
+})

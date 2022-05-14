@@ -5,6 +5,27 @@
     font-family: 'DM Sans', sans-serif;
 }
 
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+ ::-webkit-scrollbar-track {
+    background: #f5f5f5;
+}
+
+ ::-webkit-scrollbar-thumb {
+    background: #0E6EFF;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+
+ ::-webkit-scrollbar-thumb:hover {
+    background: #0f4fae;
+}
+
 .wrap {
     min-height: 100vh;
     width: 100%;
@@ -32,6 +53,7 @@
     position: fixed;
     left: 0;
     top: 0;
+    overflow: auto;
 }
 
 .asside__logo-row {
@@ -76,6 +98,74 @@
     padding: 17px 20px;
     margin-bottom: 10px;
     cursor: pointer;
+    background: #ffffff;
+    transition: 0.3s;
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
+    -ms-transition: 0.3s;
+    -o-transition: 0.3s;
+}
+
+.asside__menu-item_active {
+    background: #0E6EFF;
+    border-radius: 10px;
+    color: #ffffff;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+
+.asside__menu-item_active .asside__menu-item-text {
+    color: #ffffff;
+}
+
+.asside__menu-item:nth-child(1) .asside__menu-item-logo {
+    background: url('./images/asside/fi-rr-home.svg') no-repeat no-repeat center center
+}
+
+.asside__menu-item:nth-child(1).asside__menu-item_active .asside__menu-item-logo {
+    background: url("./images/asside/fi-rr-home-active.svg") no-repeat no-repeat center center;
+}
+
+.asside__menu-item:nth-child(2) .asside__menu-item-logo {
+    background: url('./images/asside/wallet.svg') no-repeat no-repeat center center
+}
+
+.asside__menu-item:nth-child(2).asside__menu-item_active .asside__menu-item-logo {
+    background: url("./images/asside/wallet-active.svg") no-repeat no-repeat center center;
+}
+
+.asside__menu-item:nth-child(3) .asside__menu-item-logo {
+    background: url('./images/asside/credit-card.svg') no-repeat no-repeat center center
+}
+
+.asside__menu-item:nth-child(3).asside__menu-item_active .asside__menu-item-logo {
+    background: url("./images/asside/credit-card-active.svg") no-repeat no-repeat center center;
+}
+
+.asside__menu-item:nth-child(4) .asside__menu-item-logo {
+    background: url('./images/asside/receipt.svg') no-repeat no-repeat center center
+}
+
+.asside__menu-item:nth-child(4).asside__menu-item_active .asside__menu-item-logo {
+    background: url("./images/asside/receipt-active.svg") no-repeat no-repeat center center;
+}
+
+.asside__menu-item:nth-child(5) .asside__menu-item-logo {
+    background: url('./images/asside/settings.svg') no-repeat no-repeat center center
+}
+
+.asside__menu-item:nth-child(5).asside__menu-item_active .asside__menu-item-logo {
+    background: url("./images/asside/settings-active.svg") no-repeat no-repeat center center;
+}
+
+.asside__menu-item:nth-child(6) .asside__menu-item-logo {
+    background: url('./images/asside/transaction.svg') no-repeat no-repeat center center
+}
+
+.asside__menu-item:nth-child(6).asside__menu-item_active .asside__menu-item-logo {
+    background: url("./images/asside/transaction-active.svg") no-repeat no-repeat center center;
 }
 
 .asside__menu-item:last-child {
@@ -700,6 +790,11 @@
     justify-content: center;
     margin-right: 20px;
     cursor: pointer;
+    transition: 0.3s;
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
+    -ms-transition: 0.3s;
+    -o-transition: 0.3s;
 }
 
 .transactions__pagination-item_active {
@@ -891,7 +986,8 @@
 }
 
 .balance__group_overflow-hiden {
-    width: 85px;
+    height: 55px;
+    width: 88px;
     align-items: center;
     justify-content: center;
     flex-grow: 1;
