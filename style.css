@@ -1536,6 +1536,9 @@
     .transactions__pagination-item:nth-child(4) {
         display: none;
     }
+    .transactions__name {
+        width: 100%;
+    }
 }
 
 
