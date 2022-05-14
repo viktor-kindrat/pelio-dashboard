@@ -1288,9 +1288,6 @@
     .detail {
         width: 100%;
     }
-    .activity__group {
-        align-self: center;
-    }
     .chart {
         justify-content: center;
     }
