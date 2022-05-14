@@ -1282,6 +1282,10 @@
         width: 50%;
     }
     .activity {
+        width: calc(50% - 40px);
+        order: -1;
+    }
+    .detail {
         width: 100%;
     }
     .activity__group {
@@ -1405,6 +1409,10 @@
 @media screen and (max-width: 900px) {
     .dashboard__row {
         flex-wrap: wrap;
+    }
+    .activity {
+        width: 100%;
+        order: 0;
     }
     .card {
         width: 100%;
