@@ -51,7 +51,7 @@ const newCtx = document.getElementById('transactions-chart');
 const newChart = new Chart(newCtx, {
     type: 'line',
     data: {
-        labels: ['1.5', '2', '2.5', '3', '3.5', '4'],
+        labels: ['', '', '', '', '', ''],
         datasets: [{
             label: '',
             data: [0, 10, 5, 20, 15, 30, 35],
