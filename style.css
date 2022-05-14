@@ -749,11 +749,20 @@
     width: 100%;
 }
 
+@keyframes blick {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
 .balance {
     width: 100%;
     padding: 40px;
     color: #ffffff;
-    background: linear-gradient(247.35deg, #936DFF 0%, #3ED1FF 100%);
+    background: #171B1E;
     border-radius: 20px;
 }
 
@@ -860,6 +869,7 @@
     background: #FFFFFF;
     opacity: 0.4;
     position: relative;
+    display: none;
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
     -ms-border-radius: 50%;
@@ -917,6 +927,13 @@
     font-size: 16px;
     line-height: 21px;
     color: #72757A;
+}
+
+.transactions-chart__canvas {
+    width: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .transactions-chart__headline {
@@ -1346,6 +1363,9 @@
 }
 
 @media screen and (max-width: 620px) {
+    .transactions-chart__canvas {
+        width: 100%;
+    }
     .transactions__column {
         width: auto;
     }
