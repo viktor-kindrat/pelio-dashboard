@@ -1580,6 +1580,13 @@
     .transactions__name {
         width: 100%;
     }
+    .balance__row_adaptive {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .balance__headline {
+        margin-bottom: 30px;
+    }
 }
 
 
