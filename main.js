@@ -51,6 +51,7 @@ $('#header__burger').click(function() {
         if (document.documentElement.clientWidth < 900) {
             $('.asside').css('left', '0');
             $('.header__burger').css('left', '90%')
+            $('body').css('overflow', 'hidden')
         } else {
             $('.asside').css('left', '0');
             $('.header__burger').css('left', '290px')
@@ -59,6 +60,7 @@ $('#header__burger').click(function() {
         elements[0].style.top = '0';
         elements[2].style.bottom = '0';
         trigger = 0;
+        $('body').css('overflow', 'auto')
         if (document.documentElement.clientWidth < 900) {
             $('.asside').css('left', '-100%');
             $('.header__burger').css('left', '25px')
