@@ -1,4 +1,4 @@
-fetch('https://randomuser.me/api/')
+fetch ('https://randomuser.me/api/')
     .then((response) => {
         return response.json();
     })
@@ -13,7 +13,7 @@ fetch('https://randomuser.me/api/')
     });
 
 $('.balance').mouseenter(function() {
-    $('.balance').css({
+    $(".balance").css({
         'background': 'linear-gradient(247.35deg, #936DFF 0%, #3ED1FF 100%)',
         'animation': 'blick 0.3s ease-out'
     });
@@ -23,7 +23,7 @@ $('.balance').mouseenter(function() {
         $('.balance').css('animation', 'none');
     }, 299);
 });
-$('.balance').mouseleave(function() {
+$(`.balance`).mouseleave(function() {
     $('.balance').css({
         'background': '#171B1E',
         'animation': 'blick 0.3s ease-out'
@@ -37,9 +37,9 @@ $('.transactions__pagination-item').click(function() {
     $('.transactions__pagination-item').attr('class', 'transactions__pagination-item')
     $(this).attr('class', 'transactions__pagination-item transactions__pagination-item_active')
 })
-$('.asside__menu-item').click(function() {
-    $('.asside__menu-item').attr('class', 'asside__menu-item');
-    $(this).attr('class', 'asside__menu-item asside__menu-item_active')
+$('.aside__menu-item').click(function() {
+    $('.aside__menu-item').attr('class', 'aside__menu-item');
+    $(this).attr('class', 'aside__menu-item aside__menu-item_active')
 });
 let trigger = 0;
 $('#header__burger').click(function() {
@@ -49,11 +49,11 @@ $('#header__burger').click(function() {
         elements[2].style.bottom = '8px';
         trigger = 1;
         if (document.documentElement.clientWidth < 900) {
-            $('.asside').css('left', '0');
+            $('.aside').css('left', '0');
             $('.header__burger').css('left', '90%')
             $('body').css('overflow', 'hidden')
         } else {
-            $('.asside').css('left', '0');
+            $('.aside').css('left', '0');
             $('.header__burger').css('left', '290px')
         }
     } else {
@@ -62,10 +62,10 @@ $('#header__burger').click(function() {
         trigger = 0;
         $('body').css('overflow', 'auto')
         if (document.documentElement.clientWidth < 900) {
-            $('.asside').css('left', '-100%');
+            $('.aside').css('left', '-100%');
             $('.header__burger').css('left', '25px')
         } else {
-            $('.asside').css('left', '-100%');
+            $('.aside').css('left', '-100%');
             $('.header__burger').css('left', '50px')
         }
     }
