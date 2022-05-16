@@ -347,6 +347,8 @@
     border-radius: 15px;
     padding: 20px 30px;
     margin: 0 10px;
+    position: relative;
+    left: -10px;
 }
 
 .header__input::placeholder {
@@ -358,10 +360,37 @@
     color: #72757A;
 }
 
+.header__account-row__guest .header__open-btn_switch {
+    display: none;
+}
+.header__account-row__guest .header__open-btn_settings {
+    display: none;
+}
+.header__account-row__guest .header__open-btn_statistic {
+    display: none;
+}
+.header__account-row__guest .header__open-btn_login {
+    display: flex;
+}
+
+.header__account-row__login .header__open-btn_switch {
+    display: flex;
+}
+.header__account-row__login .header__open-btn_settings {
+    display: flex;
+}
+.header__account-row__login .header__open-btn_statistic {
+    display: flex;
+}
+.header__account-row__login .header__open-btn_login {
+    display: none;
+}
+
 .header__account-group {
     height: 100%;
     display: flex;
     align-items: center;
+    margin-left: 10px;
 }
 
 .header__messages-group {
@@ -416,12 +445,84 @@
     background: #FFBF26;
 }
 
+.header__account-row .header__account-open {
+    margin-top: -50%;
+    opacity: 0;
+    z-index: 0;
+}
+
+.header__account-row_active .header__account-open {
+    margin-top: 30px;
+    opacity: 1;
+    z-index: 0;
+}
+
+.header__open-btn {
+    width: 100%;
+    margin-bottom: 20px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 23px;
+    color: #72757A;
+    display: flex;
+    align-items: flex-start;
+}
+
 .header__account-row {
     height: 100%;
     display: flex;
-    align-items: center;
-    margin-left: 40px;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 20px;
     cursor: pointer;
+    margin-top: -80px;
+}
+
+.header__account-row_active {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+    margin-top: calc(50% - 110px);
+}
+
+.header__account-open {
+    margin-top: 30px;
+}
+
+.header__open-item-logo {
+    height: 24px;
+    width: 24px;
+    display: block;
+    margin-right: 20px;
+}
+
+.header__open-btn:nth-child(1) .header__open-item-logo{
+    background: url("./images/account/account.svg") no-repeat no-repeat center center;
+    background-size: contain;
+}
+
+.header__open-btn:nth-child(2) .header__open-item-logo{
+    background: url("./images/account/switch-account.svg") no-repeat no-repeat center center;
+    background-size: contain;
+}
+.header__open-btn:nth-child(3) .header__open-item-logo{
+    background: url("./images/account/stats.svg") no-repeat no-repeat center center;
+    background-size: contain;
+}
+.header__open-btn:nth-child(4) .header__open-item-logo{
+    background: url("./images/aside/settings.svg") no-repeat no-repeat center center;
+    background-size: contain;
+}
+.header__open-btn:last-child {
+    margin-bottom: 0;
+}
+
+.header__account-group-1 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 .header__account-row::after {
@@ -433,10 +534,18 @@
     border-top: 7px solid #BEBEBE;
     border-radius: 2px;
     margin-left: 10px;
+    display: flex;
+    align-self: flex-end;
+    position: absolute;
+    margin-top: 12px;
     -webkit-border-radius: 2px;
     -moz-border-radius: 2px;
     -ms-border-radius: 2px;
     -o-border-radius: 2px;
+}
+
+.header__account-row_active::after{
+    transform: rotate(180deg);
 }
 
 .header__account-avatar {
@@ -444,6 +553,7 @@
     height: 60px;
     background: #72757A;
     border-radius: 15px;
+    flex-shrink: 0;
     -webkit-border-radius: 15px;
     -moz-border-radius: 15px;
     -ms-border-radius: 15px;
@@ -464,6 +574,13 @@
     font-size: calc(12px + .7vw);
     line-height: 31px;
     color: #000000;
+}
+
+.header__account-row.header__account-row_active.header__account-row__login {
+    margin-top: calc(50% - 50px);
+}
+.header__account-row.header__account-row_active.header__account-row__guest {
+    margin-top: calc(50% - 110px);
 }
 
 .header__email {
@@ -1475,7 +1592,7 @@
     .header__logo {
         height: 48px;
         width: 48px;
-        margin-left: 60px;
+        margin-left: 40px;
         background: url("./images/aside/Logo.svg") center no-repeat;
         background-size: contain;
     }
@@ -1498,6 +1615,11 @@
 }
 
 @media screen and (max-width: 620px) {
+    .header__logo {
+        height: 32px;
+        width: 32px;
+        margin-left: 40px
+    }
     .transactions-chart__canvas {
         width: 100%;
     }
@@ -1538,9 +1660,6 @@
     }
     .header__messages-group:first-child {
         margin-right: 0;
-    }
-    .header__account-row {
-        margin-left: 0;
     }
     .transactions-chart {
         flex-direction: column;

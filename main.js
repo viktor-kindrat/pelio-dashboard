@@ -3,7 +3,7 @@ fetch ('https://randomuser.me/api/')
         return response.json();
     })
     .then((data) => {
-        $('.header__user-name').html(data.results[0].name.first + ' ' + data.results[0].name.last);
+        $('.header__user-name').html(data.results[0].name.first + ' ' + data.results[0].name.last + ' (Guest)');
         $('.header__email').html(data.results[0].email);
         $('.header__account-avatar').css({
             'background': 'url("' + data.results[0].picture.large + '") no-repeat center',
