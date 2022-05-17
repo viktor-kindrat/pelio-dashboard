@@ -500,6 +500,7 @@
 
 .header__account-open {
     margin-top: 30px;
+    transition: 0.3s;
 }
 
 .header__open-item-logo {
