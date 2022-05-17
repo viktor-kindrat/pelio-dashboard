@@ -446,9 +446,18 @@
 }
 
 .header__account-row .header__account-open {
+    display: none;
+}
+
+.header__account-row_active .header__account-open{
+    display: block;
+}
+
+.header__account-row .header__account-open {
     margin-top: -50%;
     opacity: 0;
     z-index: 0;
+    position: relative;
 }
 
 .header__account-row_active .header__account-open {
@@ -476,7 +485,8 @@
     align-items: flex-start;
     margin-left: 20px;
     cursor: pointer;
-    margin-top: -80px;
+    padding: 20px;
+    transition: 0.3s;
 }
 
 .header__account-row_active {
@@ -484,7 +494,8 @@
     padding: 20px;
     border-radius: 20px;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
-    margin-top: calc(50% - 110px);
+    margin-top: calc(50% - 20px);
+    z-index: 20;
 }
 
 .header__account-open {
@@ -525,7 +536,7 @@
     align-items: center;
 }
 
-.header__account-row::after {
+.header__account-group-1::after {
     content: '';
     width: 0;
     height: 0;
@@ -534,17 +545,15 @@
     border-top: 7px solid #BEBEBE;
     border-radius: 2px;
     margin-left: 10px;
-    display: flex;
-    align-self: flex-end;
-    position: absolute;
     margin-top: 12px;
+    transition: 0.3s;
     -webkit-border-radius: 2px;
     -moz-border-radius: 2px;
     -ms-border-radius: 2px;
     -o-border-radius: 2px;
 }
 
-.header__account-row_active::after{
+.header__account-row_active .header__account-group-1::after{
     transform: rotate(180deg);
 }
 

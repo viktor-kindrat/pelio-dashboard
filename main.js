@@ -1,8 +1,10 @@
+let burgerTrigger = 0;
+let accountTrigger = 0;
 fetch ('https://randomuser.me/api/')
-    .then((response) => {
+.then((response) => {
         return response.json();
     })
-    .then((data) => {
+.then((data) => {
         $('.header__user-name').html(data.results[0].name.first + ' ' + data.results[0].name.last + ' (Guest)');
         $('.header__email').html(data.results[0].email);
         $('.header__account-avatar').css({
@@ -10,8 +12,8 @@ fetch ('https://randomuser.me/api/')
             'backgroundSize': 'cover'
         })
         console.log(data);
-    });
 
+    });
 $('.balance').mouseenter(function() {
     $(".balance").css({
         'background': 'linear-gradient(247.35deg, #936DFF 0%, #3ED1FF 100%)',
@@ -41,13 +43,12 @@ $('.aside__menu-item').click(function() {
     $('.aside__menu-item').attr('class', 'aside__menu-item');
     $(this).attr('class', 'aside__menu-item aside__menu-item_active')
 });
-let trigger = 0;
 $('#header__burger').click(function() {
     let elements = document.getElementsByClassName('header__line');
-    if (trigger === 0) {
+    if (burgerTrigger === 0) {
         elements[0].style.top = '8px';
         elements[2].style.bottom = '8px';
-        trigger = 1;
+        burgerTrigger = 1;
         if (document.documentElement.clientWidth < 900) {
             $('.aside').css('left', '0');
             $('.header__burger').css('left', '90%')
@@ -59,7 +60,7 @@ $('#header__burger').click(function() {
     } else {
         elements[0].style.top = '0';
         elements[2].style.bottom = '0';
-        trigger = 0;
+        burgerTrigger = 0;
         $('body').css('overflow', 'auto')
         if (document.documentElement.clientWidth < 900) {
             $('.aside').css('left', '-100%');
@@ -68,5 +69,14 @@ $('#header__burger').click(function() {
             $('.aside').css('left', '-100%');
             $('.header__burger').css('left', '50px')
         }
+    }
+})
+$('.header__account-group-1').click(function () {
+    if (accountTrigger === 0) {
+        $('.header__account-row').attr('class', $('.header__account-row').attr('class') + ' header__account-row_active');
+        accountTrigger = 1;
+    } else {
+        $('.header__account-row').attr('class', 'header__account-row');
+        accountTrigger = 0;
     }
 })
