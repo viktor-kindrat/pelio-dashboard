@@ -17,7 +17,7 @@
 </head>
 
 <body>
-    <div class="wrap">
+    <div class="wrap" id="wrap">
         <asside class="aside">
             <div class="aside__logo-row">
                 <img src="./images/aside/Logo.svg" alt="logo" class="aside__logo">
@@ -97,7 +97,7 @@
                             </div>
                         </div>
                         <div class="header__account-open">
-                            <div class="header__open-btn header__open-btn_login">
+                            <div class="header__open-btn header__open-btn_login" id="header__loginBtn">
                                 <span class="header__open-item-logo"></span>
                                 <span class="header__open-item-text">Login</span>
                             </div>
@@ -414,6 +414,55 @@
                 </div>
             </section>
         </main>
+    </div>
+    <div class="formWrap">
+        <div class="form__header">
+            <div class="form__logo">
+                <img src="./images/aside/Logo.svg" alt="logo" class="form__img_logo">
+                <div class="form__text_logo">Pelio</div>
+            </div>
+            <section class="form__register">
+                <h2 class="form__headline">Register</h2>
+                <label class="form__label">
+                    <input type="text" class="form__input" placeholder="First name">
+                </label>
+                <label class="form__label">
+                    <input type="text" class="form__input" placeholder="Last name">
+                </label>
+                <label class="form__label">
+                    <input type="text" class="form__input" placeholder="Username">
+                </label>
+                <label class="form__label">
+                    <input type="email" class="form__input" placeholder="Email">
+                </label>
+                <label class="form__label">
+                    <input type="date" class="form__input">
+                </label>
+                <label class="form__label">
+                    <input type="password" class="form__input" placeholder="Password">
+                </label>
+                <label class="form__label">
+                    <input type="password" class="form__input" placeholder="Confirm password">
+                </label>
+                <button class="form__btn">Register</button>
+                <span class="form__span">
+                    Already have an account? <button class="form__btn_underline">Login</button>
+                </span>
+            </section>
+            <section class="form__login">
+                <h2 class="form__headline">Login</h2>
+                <label class="form__label">
+                    <input type="email" class="form__input" placeholder="Email or username">
+                </label>
+                <label class="form__label">
+                    <input type="password" class="form__input" placeholder="Password">
+                </label>
+                <button class="form__btn">Login</button>
+                <span class="form__span">
+                    Haven't got an account? <button class="form__btn_underline">Register now</button>
+                </span>
+            </section>
+        </div>
     </div>
     <script src="main.js"></script>
     <script src="charts.js"></script>

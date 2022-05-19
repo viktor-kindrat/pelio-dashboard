@@ -79,4 +79,7 @@ $('.header__account-group-1').click(function () {
         $('.header__account-row').attr('class', 'header__account-row');
         accountTrigger = 0;
     }
+});
+$('#header__loginBtn').click(function () {
+    $('#wrap').fadeOut(300)
 })

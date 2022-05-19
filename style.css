@@ -7,6 +7,10 @@
     -webkit-tap-highlight-color: transparent
 }
 
+body {
+    background: #f5f5f5;
+}
+
 ::-webkit-scrollbar {
     width: 10px;
 }
@@ -31,8 +35,8 @@
 .wrap {
     min-height: 100vh;
     width: 100%;
-    background: #f5f5f5;
     display: flex;
+    display: none;
     flex-direction: column;
 }
 
@@ -59,7 +63,7 @@
     z-index: 10;
 }
 
-.aside__logo-row {
+.aside__logo-row, .form__logo {
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -67,12 +71,12 @@
     padding: 0 17px;
 }
 
-.aside__logo {
+.aside__logo, .form__img_logo {
     height: 44px;
     padding-right: 15px;
 }
 
-.aside__logo-text {
+.aside__logo-text, .form__text_logo {
     font-family: 'Poppins', sans-serif;
     text-transform: uppercase;
     font-style: normal;
@@ -1639,6 +1643,9 @@
 }
 
 @media screen and (max-width: 620px) {
+    .balance__row_adaptive {
+        margin-bottom: 30px;
+    }
     .header__logo {
         height: 32px;
         width: 32px;
