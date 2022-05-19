@@ -334,8 +334,9 @@ body {
 .dashboard-logo__text {
     font-style: normal;
     font-weight: 700;
-    font-size: calc(36px + .7vw);
+    font-size: calc(30px + .5vw);
     color: #171B1E;
+    margin-right: 10px;
 }
 
 .header__label {
@@ -405,15 +406,16 @@ body {
 }
 
 .header__messages-group:first-child {
-    margin-right: 20px;
+    margin-right: 5px;
 }
 
 .header__messages-icon {
     height: 24px;
-    width: 24px;
+    width: 30px;
     background: url("./images/header/bell.svg") no-repeat no-repeat center center;
-    background-size: 100%;
+    background-size: 24px;
     cursor: pointer;
+    flex-grow: 1;
 }
 
 .header__messages-group:nth-child(2) .header__messages-icon {
@@ -488,9 +490,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    margin-left: 20px;
     cursor: pointer;
-    padding: 20px;
     transition: 0.3s;
 }
 
