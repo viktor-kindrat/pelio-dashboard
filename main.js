@@ -1,19 +1,29 @@
 let burgerTrigger = 0;
 let accountTrigger = 0;
+let loginStatus = localStorage.getItem('loginStatus') || 'guest';
+let getClassNameFromStatus;
+
+getClassNameFromStatus = (stat) => {
+    if (stat === 'guest') {
+        return ' header__account-row_active header__account-row__guest'
+    } else if (stat === 'login') {
+        return ' header__account-row_active header__account-row__login'
+    }
+};
+
 fetch ('https://randomuser.me/api/')
-.then((response) => {
-        return response.json();
-    })
+.then((res) => {
+    return res.json();
+})
 .then((data) => {
-        $('.header__user-name').html(data.results[0].name.first + ' ' + data.results[0].name.last + ' (Guest)');
-        $('.header__email').html(data.results[0].email);
-        $('.header__account-avatar').css({
+    $('.header__user-name').html(data.results[0].name.first + ' ' + data.results[0].name.last + ' (Guest)');
+    $('.header__email').html(data.results[0].email);
+    $('.header__account-avatar').css({
             'background': 'url("' + data.results[0].picture.large + '") no-repeat center',
             'backgroundSize': 'cover'
         })
-        console.log(data);
+});
 
-    });
 $('.balance').mouseenter(function() {
     $(".balance").css({
         'background': 'linear-gradient(247.35deg, #936DFF 0%, #3ED1FF 100%)',
@@ -73,7 +83,7 @@ $('#header__burger').click(function() {
 })
 $('.header__account-group-1').click(function () {
     if (accountTrigger === 0) {
-        $('.header__account-row').attr('class', $('.header__account-row').attr('class') + ' header__account-row_active');
+        $('.header__account-row').attr('class', 'header__account-row' + getClassNameFromStatus(loginStatus));
         accountTrigger = 1;
     } else {
         $('.header__account-row').attr('class', 'header__account-row');
@@ -81,5 +91,12 @@ $('.header__account-group-1').click(function () {
     }
 });
 $('#header__loginBtn').click(function () {
+    $('.formWrap').fadeIn(300);
     $('#wrap').fadeOut(300)
+})
+$('.form__logo').click(function () {
+    $('.formWrap').fadeOut(300);
+    $('.header__account-row').attr('class', 'header__account-row');
+    $('input').val('')
+    $('#wrap').fadeIn(300);
 })
