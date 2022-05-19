@@ -1507,12 +1507,24 @@
     .dashboard-logo__text {
         margin-right: 50px;
     }
-    .header__account-group {
-        position: absolute;
-        right: 50px;
-    }
     .header__account-column {
         display: none;
+    }
+    .header__account-row {
+        position: relative;
+    }
+
+    .header__account-row_active {
+       position: relative;
+        top: 40px;
+    }
+
+    .header__account-row_active.header__account-row__guest {
+        top: 40px;
+    }
+
+    .header__account-row_active.header__account-row__login {
+        top: 75px;
     }
 }
 
@@ -1596,7 +1608,7 @@
         display: none;
     }
     .header__burger {
-        top: 50px;
+        top: 60px;
         left: 25px;
     }
     .header__logo {
