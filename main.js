@@ -32,11 +32,29 @@ if (loginStatus === 'guest') {
         });
 }
 
+$('#form__login-btn').click(function () {
+    let loginCandidate = {
+        login: $('#form__logUser').val(),
+        password: $('#form__logPassword').val()
+    }
+    let complete = false;
+    for (let i = 0; i !== users.length; i++) {
+        if (users[i].username === loginCandidate.login || users[i].email === loginCandidate.login) {
+            if (users[i].password === loginCandidate.password) {
+                alert('Hello ' + users[i].firstName + ' ' + users[i].lastName);
+                complete = true;
+            } else {
+                alert('Password is incorrect');
+            }
+        }
+    }
+})
+
 $('#form__register-btn').click(function () {
     let userCandidate = {
         firstName : $('#form__regFirstName').val(),
         lastName : $('#form__regLastName').val(),
-        username : $('#form__regUsername').val(),
+        username : $('#form__regUsername').val().toLowerCase(),
         email : $('#form__regEmail').val(),
         birthDate : $('#formDate').val(),
         password : $('#form__regPassword').val(),
