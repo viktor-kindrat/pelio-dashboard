@@ -51,6 +51,13 @@ if (loginStatus === 'guest') {
             })
             userImage = data.results[0].picture.large;
         });
+} else {
+    $('.header__user-name').html(actualUser.firstName + ' ' + actualUser.lastName);
+    $('.header__email').html(actualUser.email);
+    $('.header__account-avatar').css({
+        'background': 'url("' + actualUser.image + '") no-repeat center',
+        'backgroundSize': 'cover'
+    })
 }
 
 $('#form__login-btn').click(function () {
@@ -72,6 +79,13 @@ $('#form__login-btn').click(function () {
                 $('.form__logo').click();
                 setChart1(users[i].data1);
                 setChart2(users[i].data2);
+                $('.header__user-name').html(actualUser.firstName + ' ' + actualUser.lastName);
+                $('.header__email').html(actualUser.email);
+                $('.header__account-avatar').css({
+                    'background': 'url("' + actualUser.image + '") no-repeat center',
+                    'backgroundSize': 'cover'
+                })
+
 
                 loginStatus = 'login';
                 actualUser = users[i];
@@ -89,11 +103,11 @@ $('#form__login-btn').click(function () {
 $('#form__register-btn').click(function () {
     let genData1 = [];
     for (let i=0; i!==5; i++) {
-        genData1.push(Math.round(Math.random() * 100))
+        genData1.push(Math.round(Math.random() * (100 - 20) + 20));
     }
     let genData2 = [];
     for (let i=0; i!==5; i++) {
-        genData2.push(Math.round(Math.random() * 100))
+        genData2.push(Math.round(Math.random() * (100 - 20) + 20));
     }
     let userCandidate = {
         firstName : $('#form__regFirstName').val(),

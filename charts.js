@@ -1,6 +1,6 @@
 let genData = [];
 for (let i=0; i!==5; i++) {
-    genData.push(Math.round(Math.random() * 100))
+    genData.push(Math.round(Math.random() * (100 - 20) + 20))
 }
 function setChart1(data) {
     const ctx = document.getElementById('statistic-chart');
@@ -95,6 +95,5 @@ function setChart2(data) {
         }
     });
 }
-
-setChart1(genData)
-setChart2(genData)
+setChart1(genData);
+setChart2(genData);
