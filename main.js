@@ -1,7 +1,12 @@
 let burgerTrigger = 0;
 let accountTrigger = 0;
 let loginStatus = localStorage.getItem('loginStatus') || 'guest';
+let users = JSON.parse(localStorage.getItem('users')) || [];
 let getClassNameFromStatus;
+$('.formWrap').fadeOut(0);
+$('.form__login').fadeOut(0);
+formDate.max = new Date().toISOString().split("T")[0];
+let userImage = '';
 
 getClassNameFromStatus = (stat) => {
     if (stat === 'guest') {
@@ -11,18 +16,60 @@ getClassNameFromStatus = (stat) => {
     }
 };
 
-fetch ('https://randomuser.me/api/')
-.then((res) => {
-    return res.json();
-})
-.then((data) => {
-    $('.header__user-name').html(data.results[0].name.first + ' ' + data.results[0].name.last + ' (Guest)');
-    $('.header__email').html(data.results[0].email);
-    $('.header__account-avatar').css({
-            'background': 'url("' + data.results[0].picture.large + '") no-repeat center',
-            'backgroundSize': 'cover'
+if (loginStatus === 'guest') {
+    fetch ('https://randomuser.me/api/')
+        .then((res) => {
+            return res.json();
         })
-});
+        .then((data) => {
+            $('.header__user-name').html(data.results[0].name.first + ' ' + data.results[0].name.last + ' (Guest)');
+            $('.header__email').html(data.results[0].email);
+            $('.header__account-avatar').css({
+                'background': 'url("' + data.results[0].picture.large + '") no-repeat center',
+                'backgroundSize': 'cover'
+            })
+            userImage = data.results[0].picture.large;
+        });
+}
+
+$('#form__register-btn').click(function () {
+    let userCandidate = {
+        firstName : $('#form__regFirstName').val(),
+        lastName : $('#form__regLastName').val(),
+        username : $('#form__regUsername').val(),
+        email : $('#form__regEmail').val(),
+        birthDate : $('#formDate').val(),
+        password : $('#form__regPassword').val()
+    }
+    let passwordConfirm = $('#form__regPasswordConfirm').val();
+    let elements = $('.form__input');
+    let isThereAnEmptyValues = false;
+    for (let i = 0; i !== elements.length - 2; i++){
+        if (elements[i].value === '') {
+            isThereAnEmptyValues = true;
+        }
+    }
+    if (!isThereAnEmptyValues && userCandidate.password.length >= 8) {
+        if (userCandidate.password === passwordConfirm) {
+            $('#form__regFirstName').val('');
+            $('#form__regLastName').val('');
+            $('#form__regUsername').val('');
+            $('#form__regEmail').val('');
+            $('#formDate').val('');
+            $('#form__regPassword').val('');
+            $('#form__regPasswordConfirm').val('');
+            users.push(userCandidate);
+            localStorage.setItem('users', JSON.stringify(users));
+            alert('Registered successfully');
+            $('#form__goToLogin').click();
+        } else {
+            alert('Passwords do not match')
+        }
+    } else {
+        alert('Something went wrong! \nPlease, check all inputs and try again')
+    }
+    console.log(isThereAnEmptyValues)
+})
 
 $('.balance').mouseenter(function() {
     $(".balance").css({
@@ -93,6 +140,14 @@ $('.header__account-group-1').click(function () {
 $('#header__loginBtn').click(function () {
     $('.formWrap').fadeIn(300);
     $('#wrap').fadeOut(300)
+})
+$('#form__goToLogin').click(function (){
+    $('.form__register').fadeOut(300);
+    $('.form__login').fadeIn(300);
+});
+$('#form__goToRegister').click(function () {
+    $('.form__register').fadeIn(300);
+    $('.form__login').fadeOut(300);
 })
 $('.form__logo').click(function () {
     $('.formWrap').fadeOut(300);

@@ -421,48 +421,55 @@
                 <img src="./images/aside/Logo.svg" alt="logo" class="form__img_logo">
                 <div class="form__text_logo">Pelio</div>
             </div>
-            <section class="form__register">
-                <h2 class="form__headline">Register</h2>
-                <label class="form__label">
-                    <input type="text" class="form__input" placeholder="First name">
-                </label>
-                <label class="form__label">
-                    <input type="text" class="form__input" placeholder="Last name">
-                </label>
-                <label class="form__label">
-                    <input type="text" class="form__input" placeholder="Username">
-                </label>
-                <label class="form__label">
-                    <input type="email" class="form__input" placeholder="Email">
-                </label>
-                <label class="form__label">
-                    <input type="date" class="form__input">
-                </label>
-                <label class="form__label">
-                    <input type="password" class="form__input" placeholder="Password">
-                </label>
-                <label class="form__label">
-                    <input type="password" class="form__input" placeholder="Confirm password">
-                </label>
-                <button class="form__btn">Register</button>
-                <span class="form__span">
-                    Already have an account? <button class="form__btn_underline">Login</button>
-                </span>
-            </section>
-            <section class="form__login">
-                <h2 class="form__headline">Login</h2>
-                <label class="form__label">
-                    <input type="email" class="form__input" placeholder="Email or username">
-                </label>
-                <label class="form__label">
-                    <input type="password" class="form__input" placeholder="Password">
-                </label>
-                <button class="form__btn">Login</button>
-                <span class="form__span">
-                    Haven't got an account? <button class="form__btn_underline">Register now</button>
-                </span>
-            </section>
         </div>
+        <section class="form__register">
+            <h2 class="form__headline">Register</h2>
+            <label class="form__label">
+                First name
+                <input type="text" class="form__input" placeholder="First name" id="form__regFirstName">
+            </label>
+            <label class="form__label">
+                Last name
+                <input type="text" class="form__input" placeholder="Last name" id="form__regLastName">
+            </label>
+            <label class="form__label">
+                Create username
+                <input type="text" class="form__input" placeholder="Username" id="form__regUsername">
+            </label>
+            <label class="form__label">
+                Your email
+                <input type="email" class="form__input" placeholder="Email" id="form__regEmail">
+            </label>
+            <label class="form__label">
+                Date of birth
+                <input type="date" class="form__input" id="formDate">
+            </label>
+            <label class="form__label">
+                Create password (password must be longer then 8 chapters)
+                <input type="password" class="form__input" placeholder="Password" id="form__regPassword">
+            </label>
+            <label class="form__label">
+                Confirm password
+                <input type="password" class="form__input" placeholder="Confirm password" id="form__regPasswordConfirm">
+            </label>
+            <button class="form__btn" id="form__register-btn">Register</button>
+            <span class="form__span">
+                Already have an account? <button class="form__btn_underline" id="form__goToLogin">Login</button>
+            </span>
+        </section>
+        <section class="form__login">
+            <h2 class="form__headline">Login</h2>
+            <label class="form__label">
+                <input type="email" class="form__input" placeholder="Email or username">
+            </label>
+            <label class="form__label">
+                <input type="password" class="form__input" placeholder="Password">
+            </label>
+            <button class="form__btn">Login</button>
+            <span class="form__span">
+                Haven't got an account? <button class="form__btn_underline" id="form__goToRegister">Register now</button>
+            </span>
+        </section>
     </div>
     <script src="main.js"></script>
     <script src="charts.js"></script>
