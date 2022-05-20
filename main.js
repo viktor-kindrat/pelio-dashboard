@@ -39,7 +39,8 @@ $('#form__register-btn').click(function () {
         username : $('#form__regUsername').val(),
         email : $('#form__regEmail').val(),
         birthDate : $('#formDate').val(),
-        password : $('#form__regPassword').val()
+        password : $('#form__regPassword').val(),
+        image : userImage
     }
     let passwordConfirm = $('#form__regPasswordConfirm').val();
     let elements = $('.form__input');
@@ -58,6 +59,7 @@ $('#form__register-btn').click(function () {
             $('#formDate').val('');
             $('#form__regPassword').val('');
             $('#form__regPasswordConfirm').val('');
+            userImage = '';
             users.push(userCandidate);
             localStorage.setItem('users', JSON.stringify(users));
             alert('Registered successfully');
