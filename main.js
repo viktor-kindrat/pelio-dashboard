@@ -5,8 +5,29 @@ let users = JSON.parse(localStorage.getItem('users')) || [];
 let getClassNameFromStatus;
 $('.formWrap').fadeOut(0);
 $('.form__login').fadeOut(0);
+let formDate = document.getElementById('formDate');
 formDate.max = new Date().toISOString().split("T")[0];
 let userImage = '';
+let alphabet = [];
+let actualUser = localStorage.getItem('actualUser') || {}
+
+for (let i = 0; i !== 225; i++) {
+    alphabet.push(String.fromCharCode(i));
+}
+
+function chiper(password, n = 3) {
+    let chiperPasswoed = '';
+    for (let i = 0; i !== password.length; i++) {
+        let currentIndex = alphabet.indexOf(password[i]);
+        if (currentIndex + n <= alphabet.length - 1) {
+            currentIndex += n;
+            chiperPasswoed += alphabet[currentIndex]
+        } else {
+            chiperPasswoed += alphabet[n - (alphabet.length - currentIndex)]
+        }
+    }
+    return chiperPasswoed
+}
 
 getClassNameFromStatus = (stat) => {
     if (stat === 'guest') {
@@ -35,32 +56,57 @@ if (loginStatus === 'guest') {
 $('#form__login-btn').click(function () {
     let loginCandidate = {
         login: $('#form__logUser').val(),
-        password: $('#form__logPassword').val()
+        password: chiper($('#form__logPassword').val(), 10)
     }
-    let complete = false;
+    let noncomplete = true;
     for (let i = 0; i !== users.length; i++) {
         if (users[i].username === loginCandidate.login || users[i].email === loginCandidate.login) {
             if (users[i].password === loginCandidate.password) {
                 alert('Hello ' + users[i].firstName + ' ' + users[i].lastName);
-                complete = true;
+                noncomplete = false;
+
+                localStorage.setItem('loginStatus', loginStatus);
+
+                $('#form__logUser').val('');
+                $('#form__logPassword').val('');
+                $('.form__logo').click();
+                setChart1(users[i].data1);
+                setChart2(users[i].data2);
+
+                loginStatus = 'login';
+                actualUser = users[i];
+                localStorage.setItem('actualUser', actualUser);
             } else {
                 alert('Password is incorrect');
             }
         }
     }
+    if (noncomplete) {
+        alert(`Cant find this user \nPlease check your login`);
+    }
 })
 
 $('#form__register-btn').click(function () {
+    let genData1 = [];
+    for (let i=0; i!==5; i++) {
+        genData1.push(Math.round(Math.random() * 100))
+    }
+    let genData2 = [];
+    for (let i=0; i!==5; i++) {
+        genData2.push(Math.round(Math.random() * 100))
+    }
     let userCandidate = {
         firstName : $('#form__regFirstName').val(),
         lastName : $('#form__regLastName').val(),
         username : $('#form__regUsername').val().toLowerCase(),
         email : $('#form__regEmail').val(),
         birthDate : $('#formDate').val(),
-        password : $('#form__regPassword').val(),
-        image : userImage
+        password : chiper($('#form__regPassword').val(), 10),
+        image : userImage,
+        data1: genData1,
+        data2: genData2
     }
-    let passwordConfirm = $('#form__regPasswordConfirm').val();
+    let passwordConfirm = chiper($('#form__regPasswordConfirm').val(), 10);
     let elements = $('.form__input');
     let isThereAnEmptyValues = false;
     for (let i = 0; i !== elements.length - 2; i++){
