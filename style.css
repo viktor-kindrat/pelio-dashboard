@@ -1508,6 +1508,80 @@ body {
     cursor: pointer;
 }
 
+.statisticpg {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.statisticpg__row {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.statisticpg__card {
+    min-width: 45%;
+    border-radius: 20px;
+    background: #0E6EFF;
+    color: #ffffff;
+    padding: 30px 40px;
+    display: flex;
+    align-items: center;
+}
+
+.statisticpg__image {
+    height: 50px;
+    width: 50px;
+    border-radius: 15px;
+    margin-right: 20px;
+}
+
+.statisticpg__image_clock {
+    background: rgba(255, 255, 255, 0.2) url("./images/statistic/fa-regular_clock.svg") center center no-repeat;
+    background-size: 25px;
+}
+
+.statisticpg__image_eye {
+    background: rgba(255, 255, 255, 0.2) url("./images/statistic/akar-icons_eye-open.svg") center center no-repeat;
+    background-size: 25px;
+}
+
+.statisticpg__column {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.statisticpg__text {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 21px;
+    color: #FFFFFF;
+}
+
+.statisticpg__text_bold {
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 39px;
+}
+
+.statisticpg__canvas {
+    margin-top: 40px;
+    margin-bottom: 40px;
+    background: #ffffff;
+    border-radius: 40px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 31px;
+    color: #171B1E;
+}
+
 @media screen and (max-width: 1557px) {
     .dashboard__row_margin-top-40:last-child {
         flex-wrap: wrap;

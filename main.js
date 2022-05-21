@@ -71,7 +71,13 @@ $('#form__login-btn').click(function () {
                 alert('Hello ' + users[i].firstName + ' ' + users[i].lastName);
                 noncomplete = false;
 
+                let date = new Date()
+                let dates = users[i].loginDates;
+                console.log(dates);
+                dates.push(date);
+                users[i].loginDates = dates
                 loginStatus = 'login';
+                users[i].countOfLogin++;
                 actualUser = users[i];
                 localStorage.setItem('loginStatus', loginStatus);
 
@@ -126,7 +132,9 @@ $('#form__register-btn').click(function () {
                 password : chiper($('#form__regPassword').val(), 10),
                 image : userImage,
                 data1: genData1,
-                data2: genData2
+                data2: genData2,
+                countOfLogin: 0,
+                loginDates: []
             }
             let passwordConfirm = chiper($('#form__regPasswordConfirm').val(), 10);
             let elements = $('.form__input');

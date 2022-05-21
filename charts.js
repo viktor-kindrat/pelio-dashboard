@@ -2,6 +2,24 @@ let genData = [];
 for (let i=0; i!==5; i++) {
     genData.push(Math.round(Math.random() * (100 - 20) + 20))
 }
+
+let statsCtx = document.getElementById('statistics-open-counter');
+const labels1 = ['j', 'd', 'f', 'a', 'd', 'd'];
+const config = {
+    type: 'line',
+    data: {
+        labels: labels1,
+        datasets: [{
+            label: 'Web site visits',
+            data: [65, 59, 80, 81, 56, 55, 40],
+            fill: false,
+            borderColor: '#FF684D',
+            tension: 0.1
+        }]
+    }
+};
+let statChart = new Chart (statsCtx, config)
+
 let ctx = document.getElementById('statistic-chart');
 let myChart = new Chart(ctx, {
     type: 'bar',
@@ -187,3 +205,6 @@ function setChart2(data) {
         }
     });
 }
+
+setChart1(actualUser.data1);
+setChart2(actualUser.data2);
