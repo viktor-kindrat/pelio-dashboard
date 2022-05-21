@@ -4,11 +4,10 @@ for (let i=0; i!==5; i++) {
 }
 
 let statsCtx = document.getElementById('statistics-open-counter');
-const labels1 = ['j', 'd', 'f', 'a', 'd', 'd'];
-const config = {
+let statChart = new Chart (statsCtx, {
     type: 'line',
     data: {
-        labels: labels1,
+        labels: ['j', 'd', 'f', 'a', 'd', 'd'],
         datasets: [{
             label: 'Web site visits',
             data: [65, 59, 80, 81, 56, 55, 40],
@@ -17,8 +16,7 @@ const config = {
             tension: 0.1
         }]
     }
-};
-let statChart = new Chart (statsCtx, config)
+})
 
 let ctx = document.getElementById('statistic-chart');
 let myChart = new Chart(ctx, {
@@ -206,5 +204,33 @@ function setChart2(data) {
     });
 }
 
+function setStatChart() {
+    let data = [];
+    for (let i = visits.length - 1; data.length !== 6; i--) {
+        if (i >= 0) {
+            console.log(visits[i].visiting)
+            data.unshift(visits[i].visiting);
+        } else if (data.length !== 6) {
+            data.unshift(0)
+        }
+    }
+    statChart.destroy();
+    let statsCtx = document.getElementById('statistics-open-counter');
+    statChart = new Chart (statsCtx, {
+        type: 'line',
+        data: {
+            labels: ['', '', '', '', '', ''],
+            datasets: [{
+                label: 'Web site visits',
+                data: data,
+                fill: false,
+                borderColor: '#FF684D',
+                tension: 0.1
+            }]
+        }
+    })
+}
+
+setStatChart();
 setChart1(actualUser.data1);
 setChart2(actualUser.data2);
