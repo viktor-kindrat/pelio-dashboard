@@ -7,7 +7,6 @@ $('.formWrap').fadeOut(0);
 $('.form__login').fadeOut(0);
 let formDate = document.getElementById('formDate');
 formDate.max = new Date().toISOString().split("T")[0];
-let userImage = '';
 let alphabet = [];
 let actualUser = JSON.parse(localStorage.getItem('actualUser')) || {};
 
@@ -101,54 +100,64 @@ $('#form__login-btn').click(function () {
 })
 
 $('#form__register-btn').click(function () {
-    let genData1 = [];
-    for (let i=0; i!==5; i++) {
-        genData1.push(Math.round(Math.random() * (100 - 20) + 20));
-    }
-    let genData2 = [];
-    for (let i=0; i!==5; i++) {
-        genData2.push(Math.round(Math.random() * (100 - 20) + 20));
-    }
-    let userCandidate = {
-        firstName : $('#form__regFirstName').val(),
-        lastName : $('#form__regLastName').val(),
-        username : $('#form__regUsername').val().toLowerCase(),
-        email : $('#form__regEmail').val(),
-        birthDate : $('#formDate').val(),
-        password : chiper($('#form__regPassword').val(), 10),
-        image : userImage,
-        data1: genData1,
-        data2: genData2
-    }
-    let passwordConfirm = chiper($('#form__regPasswordConfirm').val(), 10);
-    let elements = $('.form__input');
-    let isThereAnEmptyValues = false;
-    for (let i = 0; i !== elements.length - 2; i++){
-        if (elements[i].value === '') {
-            isThereAnEmptyValues = true;
-        }
-    }
-    if (!isThereAnEmptyValues && userCandidate.password.length >= 8) {
-        if (userCandidate.password === passwordConfirm) {
-            $('#form__regFirstName').val('');
-            $('#form__regLastName').val('');
-            $('#form__regUsername').val('');
-            $('#form__regEmail').val('');
-            $('#formDate').val('');
-            $('#form__regPassword').val('');
-            $('#form__regPasswordConfirm').val('');
-            userImage = '';
-            users.push(userCandidate);
-            localStorage.setItem('users', JSON.stringify(users));
-            alert('Registered successfully');
-            $('#form__goToLogin').click();
-        } else {
-            alert('Passwords do not match')
-        }
-    } else {
-        alert('Something went wrong! \nPlease, check all inputs and try again')
-    }
-    console.log(isThereAnEmptyValues)
+    let userImage = '';
+    fetch ('https://randomuser.me/api/')
+        .then((res) => {
+            return res.json();
+        })
+        .then((data) => {
+            userImage = data.results[0].picture.large;
+        })
+        .then(() => {
+            let genData1 = [];
+            for (let i=0; i!==5; i++) {
+                genData1.push(Math.round(Math.random() * (100 - 20) + 20));
+            }
+            let genData2 = [];
+            for (let i=0; i!==5; i++) {
+                genData2.push(Math.round(Math.random() * (100 - 20) + 20));
+            }
+            let userCandidate = {
+                firstName : $('#form__regFirstName').val(),
+                lastName : $('#form__regLastName').val(),
+                username : $('#form__regUsername').val().toLowerCase(),
+                email : $('#form__regEmail').val(),
+                birthDate : $('#formDate').val(),
+                password : chiper($('#form__regPassword').val(), 10),
+                image : userImage,
+                data1: genData1,
+                data2: genData2
+            }
+            let passwordConfirm = chiper($('#form__regPasswordConfirm').val(), 10);
+            let elements = $('.form__input');
+            let isThereAnEmptyValues = false;
+            for (let i = 0; i !== elements.length - 2; i++){
+                if (elements[i].value === '') {
+                    isThereAnEmptyValues = true;
+                }
+            }
+            if (!isThereAnEmptyValues && userCandidate.password.length >= 8) {
+                if (userCandidate.password === passwordConfirm) {
+                    $('#form__regFirstName').val('');
+                    $('#form__regLastName').val('');
+                    $('#form__regUsername').val('');
+                    $('#form__regEmail').val('');
+                    $('#formDate').val('');
+                    $('#form__regPassword').val('');
+                    $('#form__regPasswordConfirm').val('');
+                    userImage = '';
+                    users.push(userCandidate);
+                    localStorage.setItem('users', JSON.stringify(users));
+                    alert('Registered successfully');
+                    $('#form__goToLogin').click();
+                } else {
+                    alert('Passwords do not match')
+                }
+            } else {
+                alert('Something went wrong! \nPlease, check all inputs and try again')
+            }
+            console.log(isThereAnEmptyValues)
+    });
 })
 
 $('.balance').mouseenter(function() {
@@ -220,6 +229,13 @@ $('.header__account-group-1').click(function () {
 $('#header__loginBtn').click(function () {
     $('.formWrap').fadeIn(300);
     $('#wrap').fadeOut(300)
+})
+$('#header__switchBtn').click(function () {
+    $('.formWrap').fadeIn(300);
+    $('#wrap').fadeOut(300)
+
+    $('.form__register').fadeOut(300);
+    $('.form__login').fadeIn(300);
 })
 $('#form__goToLogin').click(function (){
     $('.form__register').fadeOut(300);
