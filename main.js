@@ -5,6 +5,7 @@ let users = JSON.parse(localStorage.getItem('users')) || [];
 let getClassNameFromStatus;
 $('.formWrap').fadeOut(0);
 $('.form__login').fadeOut(0);
+$('#statistic').fadeOut(0);
 let formDate = document.getElementById('formDate');
 formDate.max = new Date().toISOString().split("T")[0];
 let alphabet = [];
@@ -57,6 +58,10 @@ if (loginStatus === 'guest') {
         'background': 'url("' + actualUser.image + '") no-repeat center',
         'backgroundSize': 'cover'
     })
+    $('#staticticpg-count').html(actualUser.countOfLogin);
+    console.log(new Date(actualUser.loginDates[actualUser.loginDates.length - 1]).getMonth())
+    let lastDate = new Date(actualUser.loginDates[actualUser.loginDates.length - 1]);
+    $('#staticticpg-date').html(lastDate.getDate() + '.' + (lastDate.getMonth() + 1) + '.' + lastDate.getFullYear());
 }
 
 $('#form__login-btn').click(function () {
@@ -73,7 +78,6 @@ $('#form__login-btn').click(function () {
 
                 let date = new Date()
                 let dates = users[i].loginDates;
-                console.log(dates);
                 dates.push(date);
                 users[i].loginDates = dates
                 loginStatus = 'login';
