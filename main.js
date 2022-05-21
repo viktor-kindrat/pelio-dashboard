@@ -226,17 +226,36 @@ $('.header__account-group-1').click(function () {
         accountTrigger = 0;
     }
 });
+
 $('#header__loginBtn').click(function () {
     $('.formWrap').fadeIn(300);
-    $('#wrap').fadeOut(300)
+    $('#wrap').fadeOut(300);
+    $('.header__account-row').attr('class', 'header__account-row');
+    accountTrigger = 0;
 })
 $('#header__switchBtn').click(function () {
     $('.formWrap').fadeIn(300);
     $('#wrap').fadeOut(300)
-
     $('.form__register').fadeOut(300);
     $('.form__login').fadeIn(300);
+    $('.header__account-row').attr('class', 'header__account-row');
+    accountTrigger = 0;
 })
+$('#header__statisticBtn').click(function () {
+    $('#dashboard').fadeOut(300);
+    $('#statistic').fadeIn(300);
+    $('.dashboard-logo__text').html('Statistic');
+    $('.header__account-row').attr('class', 'header__account-row');
+    accountTrigger = 0;
+})
+$('#aside__dashboard').click(function () {
+    $('#dashboard').fadeIn(300);
+    $('#statistic').fadeOut(300);
+    $('.dashboard-logo__text').html('Dashboard');
+    $('.header__account-row').attr('class', 'header__account-row');
+    accountTrigger = 0;
+})
+
 $('#form__goToLogin').click(function (){
     $('.form__register').fadeOut(300);
     $('.form__login').fadeIn(300);
