@@ -10,6 +10,23 @@ let formDate = document.getElementById('formDate');
 formDate.max = new Date().toISOString().split("T")[0];
 let alphabet = [];
 let actualUser = JSON.parse(localStorage.getItem('actualUser')) || {};
+let visits = JSON.parse(localStorage.getItem('visits')) || [];
+let currentDate = new Date();
+let needToPush = true;
+for (let i = 0; i !== visits.length; i++){
+    if (new Date(visits[i].date).getDate() === currentDate.getDate() && new Date(visits[i].date).getMonth() === currentDate.getMonth()) {
+        visits[i].visiting = visits[i].visiting + 1;
+        needToPush = false;
+        localStorage.setItem('visits', JSON.stringify(visits));
+    }
+}
+if (needToPush) {
+    visits.push({
+        date: currentDate,
+        visiting: 1
+    })
+    localStorage.setItem('visits', JSON.stringify(visits));
+}
 
 for (let i = 0; i !== 225; i++) {
     alphabet.push(String.fromCharCode(i));
