@@ -9,7 +9,7 @@ let formDate = document.getElementById('formDate');
 formDate.max = new Date().toISOString().split("T")[0];
 let userImage = '';
 let alphabet = [];
-let actualUser = localStorage.getItem('actualUser') || {}
+let actualUser = JSON.parse(localStorage.getItem('actualUser')) || {};
 
 for (let i = 0; i !== 225; i++) {
     alphabet.push(String.fromCharCode(i));
@@ -72,6 +72,8 @@ $('#form__login-btn').click(function () {
                 alert('Hello ' + users[i].firstName + ' ' + users[i].lastName);
                 noncomplete = false;
 
+                loginStatus = 'login';
+                actualUser = users[i];
                 localStorage.setItem('loginStatus', loginStatus);
 
                 $('#form__logUser').val('');
@@ -81,15 +83,13 @@ $('#form__login-btn').click(function () {
                 setChart2(users[i].data2);
                 $('.header__user-name').html(actualUser.firstName + ' ' + actualUser.lastName);
                 $('.header__email').html(actualUser.email);
+
+
                 $('.header__account-avatar').css({
                     'background': 'url("' + actualUser.image + '") no-repeat center',
                     'backgroundSize': 'cover'
                 })
-
-
-                loginStatus = 'login';
-                actualUser = users[i];
-                localStorage.setItem('actualUser', actualUser);
+                localStorage.setItem('actualUser', JSON.stringify(actualUser));
             } else {
                 alert('Password is incorrect');
             }
