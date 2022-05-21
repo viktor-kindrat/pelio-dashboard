@@ -98,8 +98,12 @@ $('#form__login-btn').click(function () {
                 dates.push(date);
                 users[i].loginDates = dates
                 loginStatus = 'login';
-                users[i].countOfLogin++;
+                users[i].countOfLogin = users[i].countOfLogin + 1;
+                console.log(users[i].countOfLogin)
                 actualUser = users[i];
+                $('#staticticpg-count').html(actualUser.countOfLogin);
+                let lastDate = new Date(actualUser.loginDates[actualUser.loginDates.length - 1]);
+                $('#staticticpg-date').html(lastDate.getDate() + '.' + (lastDate.getMonth() + 1) + '.' + lastDate.getFullYear());
                 localStorage.setItem('loginStatus', loginStatus);
 
                 $('#form__logUser').val('');
