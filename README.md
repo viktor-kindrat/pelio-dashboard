@@ -1,5 +1,8 @@
 # pelio-dashboard
 ---
+
+<a href="https://wakatime.com/badge/github/victor-kindrat/pelio-dashboard"><img src="https://wakatime.com/badge/github/victor-kindrat/pelio-dashboard.svg" alt="wakatime"></a>
+
 Pelio - your finance dashboard.
 
 Figma to HTML project.
