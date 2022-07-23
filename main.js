@@ -69,7 +69,7 @@ if (loginStatus === 'guest') {
             userImage = data.results[0].picture.large;
         });
 } else {
-    $('.header__user-name').html(actualUser.firstName + ' ' + actualUser.lastName);
+    $('.header__user-name, #balance__name').html(actualUser.firstName + ' ' + actualUser.lastName);
     $('.header__email').html(actualUser.email);
     $('.header__account-avatar').css({
         'background': 'url("' + actualUser.image + '") no-repeat center',
@@ -79,6 +79,11 @@ if (loginStatus === 'guest') {
     console.log(new Date(actualUser.loginDates[actualUser.loginDates.length - 1]).getMonth())
     let lastDate = new Date(actualUser.loginDates[actualUser.loginDates.length - 1]);
     $('#staticticpg-date').html(lastDate.getDate() + '.' + (lastDate.getMonth() + 1) + '.' + lastDate.getFullYear());
+    $('#card1 .card__headline').text(actualUser.invoices.total)
+    $('#card2 .card__headline').text(actualUser.invoices.paid)
+    $('#card3 .card__headline').text(actualUser.invoices.unpaid)
+    $('#card4 .card__headline').text(actualUser.invoices.sent)
+    $('#balance').text(actualUser.balance)
 }
 
 $('#form__login-btn').click(function () {
@@ -111,9 +116,13 @@ $('#form__login-btn').click(function () {
                 $('.form__logo').click();
                 setChart1(users[i].data1);
                 setChart2(users[i].data2);
-                $('.header__user-name').html(actualUser.firstName + ' ' + actualUser.lastName);
+                $('.header__user-name, #balance__name').html(actualUser.firstName + ' ' + actualUser.lastName);
                 $('.header__email').html(actualUser.email);
-
+                $('#card1 .card__headline').text(users[i].invoices.total)
+                $('#card2 .card__headline').text(users[i].invoices.paid)
+                $('#card3 .card__headline').text(users[i].invoices.unpaid)
+                $('#card4 .card__headline').text(users[i].invoices.sent)
+                $('#balance').text(users[i].balance)
 
                 $('.header__account-avatar').css({
                     'background': 'url("' + actualUser.image + '") no-repeat center',
@@ -148,6 +157,13 @@ $('#form__register-btn').click(function () {
             for (let i=0; i!==5; i++) {
                 genData2.push(Math.round(Math.random() * (100 - 20) + 20));
             }
+            let invoices = {
+                total: 0,
+                paid: Math.round(Math.random() * 100),
+                unpaid: Math.round(Math.random() * 100),
+                sent: Math.round(Math.random() * 100)
+            }
+            invoices.total = invoices.paid + invoices.unpaid + invoices.sent;
             let userCandidate = {
                 firstName : $('#form__regFirstName').val(),
                 lastName : $('#form__regLastName').val(),
@@ -159,7 +175,9 @@ $('#form__register-btn').click(function () {
                 data1: genData1,
                 data2: genData2,
                 countOfLogin: 0,
-                loginDates: []
+                loginDates: [],
+                invoices: invoices,
+                balance: Math.round(Math.random() * 10000)
             }
             let passwordConfirm = chiper($('#form__regPasswordConfirm').val(), 10);
             let elements = $('.form__input');
