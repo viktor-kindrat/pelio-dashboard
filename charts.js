@@ -208,7 +208,6 @@ function setStatChart() {
     let data = [];
     for (let i = visits.length - 1; data.length !== 6; i--) {
         if (i >= 0) {
-            console.log(visits[i].visiting)
             data.unshift(visits[i].visiting);
         } else if (data.length !== 6) {
             data.unshift(0)

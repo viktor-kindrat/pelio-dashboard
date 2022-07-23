@@ -76,7 +76,6 @@ if (loginStatus === 'guest') {
         'backgroundSize': 'cover'
     })
     $('#staticticpg-count').html(actualUser.countOfLogin);
-    console.log(new Date(actualUser.loginDates[actualUser.loginDates.length - 1]).getMonth())
     let lastDate = new Date(actualUser.loginDates[actualUser.loginDates.length - 1]);
     $('#staticticpg-date').html(lastDate.getDate() + '.' + (lastDate.getMonth() + 1) + '.' + lastDate.getFullYear());
     $('#card1 .card__headline').text(actualUser.invoices.total)
@@ -104,7 +103,6 @@ $('#form__login-btn').click(function () {
                 users[i].loginDates = dates
                 loginStatus = 'login';
                 users[i].countOfLogin = users[i].countOfLogin + 1;
-                console.log(users[i].countOfLogin)
                 actualUser = users[i];
                 $('#staticticpg-count').html(actualUser.countOfLogin);
                 let lastDate = new Date(actualUser.loginDates[actualUser.loginDates.length - 1]);
@@ -207,7 +205,6 @@ $('#form__register-btn').click(function () {
             } else {
                 alert('Something went wrong! \nPlease, check all inputs and try again')
             }
-            console.log(isThereAnEmptyValues)
     });
 })
 
