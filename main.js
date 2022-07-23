@@ -13,7 +13,7 @@ let actualUser = JSON.parse(localStorage.getItem('actualUser')) || {};
 let visits = JSON.parse(localStorage.getItem('visits')) || [];
 let currentDate = new Date();
 let needToPush = true;
-for (let i = 0; i !== visits.length; i++){
+for (let i = 0; i !== visits.length; i++) {
     if (new Date(visits[i].date).getDate() === currentDate.getDate() && new Date(visits[i].date).getMonth() === currentDate.getMonth()) {
         visits[i].visiting = visits[i].visiting + 1;
         needToPush = false;
@@ -55,7 +55,7 @@ getClassNameFromStatus = (stat) => {
 };
 
 if (loginStatus === 'guest') {
-    fetch ('https://randomuser.me/api/')
+    fetch('https://randomuser.me/api/')
         .then((res) => {
             return res.json();
         })
@@ -82,7 +82,13 @@ if (loginStatus === 'guest') {
     $('#card2 .card__headline').text(actualUser.invoices.paid)
     $('#card3 .card__headline').text(actualUser.invoices.unpaid)
     $('#card4 .card__headline').text(actualUser.invoices.sent)
+    $('#balance-card1 .detail__price').text(`$ ${actualUser.balanceDetails.expenseAndLastMonth}`);
+    $('#balance-card2 .detail__price').text(`$ ${actualUser.balanceDetails.expenseAndLastMonth}`);
+    $('#balance-card3 .detail__price').text(`$ ${actualUser.balanceDetails.taxes}`);
+    $('#balance-card4 .detail__price').text(`$ ${actualUser.balanceDetails.debt}`);
     $('#balance').text(actualUser.balance)
+    $('#totalBalance').text(`$ ${actualUser.balance}`);
+    $('.transactions-chart__headline').text(actualUser.transactions);
 }
 
 $('#form__login-btn').click(function () {
@@ -121,12 +127,22 @@ $('#form__login-btn').click(function () {
                 $('#card3 .card__headline').text(users[i].invoices.unpaid)
                 $('#card4 .card__headline').text(users[i].invoices.sent)
                 $('#balance').text(users[i].balance)
+                $('#totalBalance').text(`$ ${users[i].balance}`);
+
+                $('#balance-card1 .detail__price').text(`$ ${users[i].balanceDetails.expenseAndLastMonth}`);
+                $('#balance-card2 .detail__price').text(`$ ${users[i].balanceDetails.expenseAndLastMonth}`);
+                $('#balance-card3 .detail__price').text(`$ ${users[i].balanceDetails.taxes}`);
+                $('#balance-card4 .detail__price').text(`$ ${users[i].balanceDetails.debt}`);
+
+                $('.transactions-chart__headline').text(users[i].transactions);
+
 
                 $('.header__account-avatar').css({
                     'background': 'url("' + actualUser.image + '") no-repeat center',
                     'backgroundSize': 'cover'
                 })
                 localStorage.setItem('actualUser', JSON.stringify(actualUser));
+
             } else {
                 alert('Password is incorrect');
             }
@@ -139,7 +155,7 @@ $('#form__login-btn').click(function () {
 
 $('#form__register-btn').click(function () {
     let userImage = '';
-    fetch ('https://randomuser.me/api/')
+    fetch('https://randomuser.me/api/')
         .then((res) => {
             return res.json();
         })
@@ -148,12 +164,15 @@ $('#form__register-btn').click(function () {
         })
         .then(() => {
             let genData1 = [];
-            for (let i=0; i!==5; i++) {
+            for (let i = 0; i !== 5; i++) {
                 genData1.push(Math.round(Math.random() * (100 - 20) + 20));
             }
             let genData2 = [];
-            for (let i=0; i!==5; i++) {
-                genData2.push(Math.round(Math.random() * (100 - 20) + 20));
+            let transactions = 0;
+            for (let i = 0; i !== 5; i++) {
+                let number = Math.round(Math.random() * (100 - 20) + 20);
+                transactions += number;
+                genData2.push(number);
             }
             let invoices = {
                 total: 0,
@@ -162,25 +181,33 @@ $('#form__register-btn').click(function () {
                 sent: Math.round(Math.random() * 100)
             }
             invoices.total = invoices.paid + invoices.unpaid + invoices.sent;
+            let balance = {
+                expenseAndLastMonth: Math.round(Math.random() * 10000),
+                taxes: Math.round(Math.random() * 10000),
+                debt: 0
+            }
+            balance.debt = balance.expenseAndLastMonth + balance.taxes
             let userCandidate = {
-                firstName : $('#form__regFirstName').val(),
-                lastName : $('#form__regLastName').val(),
-                username : $('#form__regUsername').val().toLowerCase(),
-                email : $('#form__regEmail').val(),
-                birthDate : $('#formDate').val(),
-                password : chiper($('#form__regPassword').val(), 10),
-                image : userImage,
+                firstName: $('#form__regFirstName').val(),
+                lastName: $('#form__regLastName').val(),
+                username: $('#form__regUsername').val().toLowerCase(),
+                email: $('#form__regEmail').val(),
+                birthDate: $('#formDate').val(),
+                password: chiper($('#form__regPassword').val(), 10),
+                image: userImage,
                 data1: genData1,
                 data2: genData2,
                 countOfLogin: 0,
                 loginDates: [],
                 invoices: invoices,
-                balance: Math.round(Math.random() * 10000)
+                balance: Math.round(Math.random() * 10000),
+                balanceDetails: balance,
+                transactions: transactions
             }
             let passwordConfirm = chiper($('#form__regPasswordConfirm').val(), 10);
             let elements = $('.form__input');
             let isThereAnEmptyValues = false;
-            for (let i = 0; i !== elements.length - 2; i++){
+            for (let i = 0; i !== elements.length - 2; i++) {
                 if (elements[i].value === '') {
                     isThereAnEmptyValues = true;
                 }
@@ -205,21 +232,22 @@ $('#form__register-btn').click(function () {
             } else {
                 alert('Something went wrong! \nPlease, check all inputs and try again')
             }
-    });
+        });
 })
 
-$('.balance').mouseenter(function() {
+$('.balance').mouseenter(function () {
     $(".balance").css({
         'background': 'linear-gradient(247.35deg, #936DFF 0%, #3ED1FF 100%)',
         'animation': 'blick 0.3s ease-out'
     });
     $('.balance__circle').css('display', 'block');
-    $('.balance').mouseleave(function() {})
+    $('.balance').mouseleave(function () {
+    })
     setTimeout(() => {
         $('.balance').css('animation', 'none');
     }, 299);
 });
-$(`.balance`).mouseleave(function() {
+$(`.balance`).mouseleave(function () {
     $('.balance').css({
         'background': '#171B1E',
         'animation': 'blick 0.3s ease-out'
@@ -229,15 +257,15 @@ $(`.balance`).mouseleave(function() {
         $('.balance').css('animation', 'none');
     }, 299);
 });
-$('.transactions__pagination-item').click(function() {
+$('.transactions__pagination-item').click(function () {
     $('.transactions__pagination-item').attr('class', 'transactions__pagination-item')
     $(this).attr('class', 'transactions__pagination-item transactions__pagination-item_active')
 })
-$('.aside__menu-item').click(function() {
+$('.aside__menu-item').click(function () {
     $('.aside__menu-item').attr('class', 'aside__menu-item');
     $(this).attr('class', 'aside__menu-item aside__menu-item_active')
 });
-$('#header__burger').click(function() {
+$('#header__burger').click(function () {
     let elements = document.getElementsByClassName('header__line');
     if (burgerTrigger === 0) {
         elements[0].style.top = '8px';
@@ -304,7 +332,7 @@ $('#aside__dashboard').click(function () {
     accountTrigger = 0;
 })
 
-$('#form__goToLogin').click(function (){
+$('#form__goToLogin').click(function () {
     $('.form__register').fadeOut(300);
     $('.form__login').fadeIn(300);
 });
