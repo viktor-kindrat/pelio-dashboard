@@ -122,10 +122,10 @@
             <section class="dashboard" id="dashboard">
                 <div class="dashboard__row dashboard__row_adapt">
                     <!-- first card  -->
-                    <div class="card">
+                    <div class="card" id="card1">
                         <div class="card__image" style="background: #ffffff2c url('./images/cards/list.svg') no-repeat center;"></div>
                         <div class="card__info">
-                            <h3 class="card__headline">32,568</h3>
+                            <h3 class="card__headline">0</h3>
                             <div class="card__text">Total Invoices</div>
                         </div>
                         <div class="card__background">
@@ -134,10 +134,10 @@
                         </div>
                     </div>
                     <!-- second card  -->
-                    <div class="card">
+                    <div class="card" id="card2">
                         <div class="card__image" style="background: #ffffff2c url('./images/cards/check.svg') no-repeat center;"></div>
                         <div class="card__info">
-                            <h3 class="card__headline">8,558</h3>
+                            <h3 class="card__headline">0</h3>
                             <div class="card__text">Paid Invoices</div>
                         </div>
                         <div class="card__background">
@@ -146,10 +146,10 @@
                         </div>
                     </div>
                     <!-- third card  -->
-                    <div class="card">
+                    <div class="card" id="card3">
                         <div class="card__image" style="background: #ffffff2c url('./images/cards/close.svg') no-repeat center;"></div>
                         <div class="card__info">
-                            <h3 class="card__headline">2,568</h3>
+                            <h3 class="card__headline">0</h3>
                             <div class="card__text">Unpaid Invoices</div>
                         </div>
                         <div class="card__background">
@@ -158,10 +158,10 @@
                         </div>
                     </div>
                     <!-- fourth card  -->
-                    <div class="card">
+                    <div class="card" id="card4">
                         <div class="card__image" style="background: #ffffff2c url('./images/cards/invoice.svg') no-repeat center;"></div>
                         <div class="card__info">
-                            <h3 class="card__headline">668</h3>
+                            <h3 class="card__headline">0</h3>
                             <div class="card__text">Total invoices Sent</div>
                         </div>
                         <div class="card__background">
@@ -302,7 +302,7 @@
                         <div class="balance">
                             <div class="balance__text balance__text_semi-bold">Balance</div>
                             <div class="balance__row balance__row_adaptive">
-                                <div class="balance__headline">$ 4,929</div>
+                                <div class="balance__headline">$ <span id="balance">0</span></div>
                                 <div class="balance__card-number">
                                     <span class="balance__num balance__num_hided">&#9679; &#9679; &#9679; &#9679;</span>
                                     <span class="balance__num balance__num_hided">&#9679; &#9679; &#9679; &#9679;</span>
@@ -318,7 +318,7 @@
                                     </div>
                                     <div class="balance__column">
                                         <div class="balance__text">Name</div>
-                                        <div class="balance__text balance__text_bold">John Doe</div>
+                                        <div class="balance__text balance__text_bold" id="balance__name">guest</div>
                                     </div>
                                 </div>
                                 <div class="balance__group balance__group_overflow-hidden">
